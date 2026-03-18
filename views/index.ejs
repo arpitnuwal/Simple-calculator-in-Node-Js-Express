@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern EJS Calculator</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .card {
+            width: 350px;
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .btns {
+            margin-top: 10px;
+        }
+
+        button {
+            width: 60px;
+            height: 50px;
+            margin: 5px;
+            border-radius: 10px;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .add { background: #28a745; color: white; }
+        .sub { background: #ffc107; color: black; }
+        .mul { background: #007bff; color: white; }
+        .div { background: #dc3545; color: white; }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.3);
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>🧮 Calculator</h2>
+
+    <form action="/calculate" method="POST">
+        <input type="text" name="num1" placeholder="Enter First Number" required>
+        <input type="text" name="num2" placeholder="Enter Second Number" required>
+
+        <div class="btns">
+            <button class="add" name="operation" value="add">+</button>
+            <button class="sub" name="operation" value="sub">-</button>
+            <button class="mul" name="operation" value="mul">×</button>
+            <button class="div" name="operation" value="div">÷</button>
+        </div>
+    </form>
+
+    <% if (result !== null) { %>
+        <div class="result">
+            Result: <%= result %>
+        </div>
+    <% } %>
+</div>
+
+</body>
+</html>
